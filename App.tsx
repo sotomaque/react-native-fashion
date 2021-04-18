@@ -1,21 +1,7 @@
 import { LoadAssets } from '@components';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Onboarding } from '@screens';
+import { AuthenticationNavigator } from '@navigation';
 import * as React from 'react';
 import 'react-native-gesture-handler';
-
-const AuthenticationStack = createStackNavigator();
-const AuthenticationNavigator = () => {
-  return (
-    <AuthenticationStack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <AuthenticationStack.Screen name='Onboarding' component={Onboarding} />
-    </AuthenticationStack.Navigator>
-  );
-};
 
 const fonts = {
   'SFProText-Bold': require('./src/assets/fonts/SF-Pro-Text-Bold.otf'),
