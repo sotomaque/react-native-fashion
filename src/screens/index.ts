@@ -1,3 +1,3 @@
 import { Login, Onboarding, Signup } from './Auth';
-
-export { Login, Onboarding, Signup };
+import { Home } from './Home';
+export { Home, Login, Onboarding, Signup };

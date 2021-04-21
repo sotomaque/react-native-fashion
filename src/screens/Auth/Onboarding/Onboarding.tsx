@@ -1,12 +1,20 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { Animated, Dimensions, StyleSheet, View } from 'react-native';
+import { Button, ButtonProps as RNButtonProps } from 'react-native-elements';
 import { useValue } from 'react-native-reanimated';
 import Slide, { SLIDE_HEIGHT } from './Slide';
 
 const { width } = Dimensions.get('window');
 
-const Onboarding = (): React.ReactElement => {
+interface ButtonProps extends RNButtonProps {
+  large?: boolean;
+}
+
+const Onboarding = ({ large }: ButtonProps): React.ReactElement => {
   const x = useValue(0);
+  console.log('large', large);
+  const navigation = useNavigation();
   // const onScroll = onScrollEvent({ x });
   // const backgroundColor = interpolateColor(x, {
   //   inputRange: [0, width, width * 2, width * 3],
@@ -36,7 +44,17 @@ const Onboarding = (): React.ReactElement => {
         />
         <View
           style={{ flex: 1, backgroundColor: 'white', borderTopLeftRadius: 75 }}
-        ></View>
+        >
+          <Button
+            onPress={() => {
+              navigation.navigate('Home');
+            }}
+            title='Navigate'
+            color='#841584'
+            style={{ marginTop: 200, marginHorizontal: 40 }}
+            accessibilityLabel='TODO:AL'
+          />
+        </View>
       </View>
     </View>
   );

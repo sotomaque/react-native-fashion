@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Onboarding } from '@screens';
+import { Home, Onboarding } from '@screens';
 import React from 'react';
 
 const AuthenticationStack = createStackNavigator();
@@ -11,6 +11,7 @@ const AuthenticationNavigator = (): React.ReactElement => {
       }}
     >
       <AuthenticationStack.Screen name='Onboarding' component={Onboarding} />
+      <AuthenticationStack.Screen name='Home' component={Home} />
     </AuthenticationStack.Navigator>
   );
 };
