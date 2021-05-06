@@ -6,10 +6,18 @@ import { useValue } from 'react-native-reanimated';
 import Slide, { SLIDE_HEIGHT } from './Slide';
 
 const { width } = Dimensions.get('window');
+const BORDER_RADIUS = 75;
 
 interface ButtonProps extends RNButtonProps {
   large?: boolean;
 }
+
+const slides = [
+  { label: 'Relaxed', color: '#BFEAF5' },
+  { label: 'Playful', color: '#BEECC4' },
+  { label: 'Excentric', color: '#FFE4D9' },
+  { label: 'Funky', color: '#FFDDDD' },
+];
 
 const Onboarding = ({ large }: ButtonProps): React.ReactElement => {
   const x = useValue(0);
@@ -17,13 +25,13 @@ const Onboarding = ({ large }: ButtonProps): React.ReactElement => {
   const navigation = useNavigation();
   // const onScroll = onScrollEvent({ x });
   // const backgroundColor = interpolateColor(x, {
-  //   inputRange: [0, width, width * 2, width * 3],
-  //   outputRange: ['#BFEAF5', '#BEECC4', 'FFE4D9', 'FFDDDD'],
+  //   inputRange: slies.map((_, i) => i * width )
+  //   outputRange: slies.map(slide => slide.color)
   // });
 
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.slider, { backgroundColor: 'cyan' }]}>
+      <Animated.View style={[styles.slider, { backgroundColor: '#BFEAF5' }]}>
         <Animated.ScrollView
           decelerationRate='fast'
           horizontal
@@ -32,25 +40,28 @@ const Onboarding = ({ large }: ButtonProps): React.ReactElement => {
           bounces={false}
           scrollEventThrottle={1}
         >
-          <Slide label='Relaxed' />
-          <Slide label='Playful' right />
-          <Slide label='Excentric' />
-          <Slide label='Funky' right />
+          {slides.map(({ label }, index) => (
+            <Slide
+              key={`${label}-${index}`}
+              {...{ label }}
+              right={!!(index % 2)}
+            />
+          ))}
         </Animated.ScrollView>
       </Animated.View>
       <View style={styles.footer}>
         <Animated.View
-          style={{ ...StyleSheet.absoluteFillObject, backgroundColor: 'cyan' }}
+          style={{
+            ...StyleSheet.absoluteFillObject,
+            backgroundColor: '#BFEAF5',
+          }}
         />
-        <View
-          style={{ flex: 1, backgroundColor: 'white', borderTopLeftRadius: 75 }}
-        >
+        <View style={styles.footerContent}>
           <Button
             onPress={() => {
               navigation.navigate('Home');
             }}
             title='Navigate'
-            color='#841584'
             style={{ marginTop: 200, marginHorizontal: 40 }}
             accessibilityLabel='TODO:AL'
           />
@@ -67,10 +78,15 @@ const styles = StyleSheet.create({
   },
   slider: {
     height: SLIDE_HEIGHT,
-    borderBottomRightRadius: 75,
+    borderBottomRightRadius: BORDER_RADIUS,
   },
   footer: {
     flex: 1,
+  },
+  footerContent: {
+    flex: 1,
+    backgroundColor: 'white',
+    borderTopLeftRadius: BORDER_RADIUS,
   },
 });
 
