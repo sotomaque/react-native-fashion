@@ -14,7 +14,6 @@ const Home = (): React.ReactElement => {
           navigation.navigate('Onboarding');
         }}
         title='Navigate'
-        color='#841584'
         style={{ marginTop: 200, marginHorizontal: 40 }}
         accessibilityLabel='TODO:AL'
       />
