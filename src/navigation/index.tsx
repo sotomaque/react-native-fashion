@@ -1,25 +1,29 @@
-import { AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Home } from '@screens';
 import React from 'react';
 import AuthenticationNavigator from './AuthStack';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 function RootNavigator(): React.ReactElement {
   return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='Auth' component={AuthenticationNavigator} />
+      <Stack.Screen name='Home' component={HomeNavigator} />
+    </Stack.Navigator>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function HomeNavigator(): React.ReactElement {
+  return (
     <Tab.Navigator>
-      <Tab.Screen
-        name='Home'
-        component={AuthenticationNavigator}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <AntDesign name='search1' size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen name='Home1' component={AuthenticationNavigator} />
-      <Tab.Screen name='Home2' component={AuthenticationNavigator} />
-      <Tab.Screen name='Home3' component={AuthenticationNavigator} />
+      <Tab.Screen name='Home' component={Home} />
+      <Tab.Screen name='Home2' component={Home} />
+      <Tab.Screen name='Home3' component={Home} />
+      <Tab.Screen name='Home4' component={Home} />
     </Tab.Navigator>
   );
 }
