@@ -1,8 +1,10 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { Home, Onboarding } from '@screens';
 import React from 'react';
+import { AuthenticationStackParams } from './types';
 
-const AuthenticationStack = createStackNavigator();
+const AuthenticationStack = createStackNavigator<AuthenticationStackParams>();
+
 const AuthenticationNavigator = (): React.ReactElement => {
   return (
     <AuthenticationStack.Navigator

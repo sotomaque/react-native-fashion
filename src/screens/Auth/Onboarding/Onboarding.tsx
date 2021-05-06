@@ -1,6 +1,6 @@
+import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useRef } from 'react';
 import { Dimensions, StyleSheet, View } from 'react-native';
-import { ButtonProps as RNButtonProps } from 'react-native-elements';
 import Animated, {
   interpolateColor,
   useAnimatedScrollHandler,
@@ -8,15 +8,12 @@ import Animated, {
   useDerivedValue,
   useSharedValue,
 } from 'react-native-reanimated';
+import { AuthenticationStackParams } from 'src/navigation/types';
 import Slide, { SLIDE_HEIGHT } from './Slide';
 import Subslide from './Subslide';
 
 const { width } = Dimensions.get('window');
 const BORDER_RADIUS = 75;
-
-interface ButtonProps extends RNButtonProps {
-  large?: boolean;
-}
 
 const slides = [
   {
@@ -49,7 +46,11 @@ const slides = [
   },
 ];
 
-const Onboarding = (): React.ReactElement => {
+type OnboardingProps = {
+  navigation: StackNavigationProp<AuthenticationStackParams, 'Onboarding'>;
+};
+
+const Onboarding = ({ navigation }: OnboardingProps): React.ReactElement => {
   const x = useSharedValue(0);
   const scroll = useRef<Animated.ScrollView>(null);
   const onScroll = useAnimatedScrollHandler({
@@ -113,6 +114,15 @@ const Onboarding = (): React.ReactElement => {
                 key={index}
                 {...{ subtitle, description }}
                 last={index === slides.length - 1}
+                onPress={() => {
+                  if (index === slides.length - 1) {
+                    navigation.navigate('Home');
+                  } else if (scroll.current) {
+                    scroll.current
+                      .getNode()
+                      .scrollTo({ x: width * (index + 1), animated: true });
+                  }
+                }}
               />
             ))}
           </Animated.View>

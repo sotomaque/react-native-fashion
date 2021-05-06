@@ -1,3 +1,2 @@
-import LoadAssets from './LoadAssets';
-
-export { LoadAssets };
+export { default as Button } from './Button';
+export { default as LoadAssets } from './LoadAssets';
