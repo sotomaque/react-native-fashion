@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 80,
+    fontSize: 65,
     lineHeight: 80,
     fontFamily: 'SFProText-Bold',
     color: 'white',

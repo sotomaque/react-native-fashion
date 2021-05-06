@@ -17,32 +17,32 @@ const BORDER_RADIUS = 75;
 
 const slides = [
   {
-    title: 'Relaxed',
+    title: 'Simple',
     color: '#BFEAF5',
-    subtitle: 'Find Your Outfits',
+    subtitle: 'Flatten the learning curve',
     description:
-      'Confused about your outfit? Dont worry! Find the best outfit here!',
+      'Trading platforms each offer unique user experiences. Onboarding and getting comforatable with each is unnecessary friction we aim to reduce.',
   },
   {
-    title: 'Playful',
+    title: 'Efficient',
     color: '#BEECC4',
-    subtitle: 'Hear it First, Wear it First',
+    subtitle: 'Master view',
     description:
-      'Hating the clothes in your wardrobe? Explore hundreds of outfit ideas',
+      'See how all your accounts across all the exchanges you use are preforming.',
   },
   {
-    title: 'Excentric',
+    title: 'Smart',
     color: '#FFE4D9',
-    subtitle: 'Your Style, Your Way',
+    subtitle: 'See an opportunity first',
     description:
-      'Create your individual & unique style and look amazing everyday',
+      'Find opportunities on different exchanges and act quickly, without having to toggle tabs.',
   },
   {
-    title: 'Funky',
+    title: 'Data Driven',
     color: '#FFDDDD',
-    subtitle: 'Look Good, Feel Good',
+    subtitle: 'Trade smart not hard',
     description:
-      'Discover the latest trends in fashion and explore your personality',
+      'Analyze portfolio performance. Figure out where youre doing the right thing and where you are not.',
   },
 ];
 

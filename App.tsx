@@ -1,7 +1,8 @@
 import { LoadAssets } from '@components';
-import { AuthenticationNavigator } from '@navigation';
+import RootNavigator from '@navigation';
 import * as React from 'react';
 import 'react-native-gesture-handler';
+import './src/config/i18n';
 
 const fonts = {
   'SFProText-Bold': require('./src/assets/fonts/SF-Pro-Text-Bold.otf'),
@@ -12,7 +13,7 @@ const fonts = {
 const App = (): React.ReactElement => {
   return (
     <LoadAssets {...{ fonts }}>
-      <AuthenticationNavigator />
+      <RootNavigator />
     </LoadAssets>
   );
 };
