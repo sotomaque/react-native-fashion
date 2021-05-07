@@ -2,6 +2,10 @@ import React from 'react';
 import { SafeAreaView, ScrollView, Text, View } from 'react-native';
 import Graph from './Graph';
 
+const COINBASE_KEY = 'ozL6xDdC8YNOgnPP';
+const COINBASE_SECRET = 'lUvrElx1Jo6CiNWTdkqJMJrRvb0SJPBP';
+console.log('ck, cs', COINBASE_KEY, COINBASE_SECRET);
+
 const Home = (): React.ReactElement => {
   return (
     <SafeAreaView style={{ height: '100%', backgroundColor: 'white' }}>

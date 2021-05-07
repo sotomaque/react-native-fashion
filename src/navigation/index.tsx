@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+import { Entypo, FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Home } from '@screens';
@@ -20,10 +22,42 @@ const Tab = createBottomTabNavigator();
 function HomeNavigator(): React.ReactElement {
   return (
     <Tab.Navigator>
-      <Tab.Screen name='Home' component={Home} />
-      <Tab.Screen name='Home2' component={Home} />
-      <Tab.Screen name='Home3' component={Home} />
-      <Tab.Screen name='Home4' component={Home} />
+      <Tab.Screen
+        name='Home'
+        component={Home}
+        options={{
+          tabBarIcon: ({ color }: { color: string }) => (
+            <Ionicons name='ios-home-outline' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Markets'
+        component={Home}
+        options={{
+          tabBarIcon: ({ color }: { color: string }) => (
+            <Entypo name='line-graph' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='News'
+        component={Home}
+        options={{
+          tabBarIcon: ({ color }: { color: string }) => (
+            <FontAwesome name='newspaper-o' size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name='Settings'
+        component={Home}
+        options={{
+          tabBarIcon: ({ color }: { color: string }) => (
+            <Ionicons name='person-outline' size={24} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 }
