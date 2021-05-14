@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 44,
+    marginTop: 25,
   },
   subtitle: {
     fontFamily: 'SFProText-Semibold',
