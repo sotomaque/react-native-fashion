@@ -1,27 +1,33 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton, RectButtonProperties } from 'react-native-gesture-handler';
+import { useTheme } from '../Theme';
 import styles from './styles';
 
 interface ButtonProps {
-  label: string;
   variant: 'primary' | 'default';
+  label?: string;
   onPress: () => void;
+  style?: RectButtonProperties['style'];
 }
 
 const Button = ({
   label,
   variant,
   onPress,
+  style,
 }: ButtonProps): React.ReactElement => {
+  const theme = useTheme();
   const backgroundColor =
-    variant === 'primary' ? '#2CB9B0' : 'rgba(12, 13, 52, 0.05)';
-  const color = variant === 'primary' ? 'white' : '#0C0D34';
+    variant === 'primary' ? theme.colors.primary : theme.colors.background2;
+  const color =
+    variant === 'primary' ? theme.colors.background : theme.colors.secondary;
 
   return (
     <RectButton
       style={[
         styles.container,
+        style,
         {
           backgroundColor,
         },
@@ -32,5 +38,7 @@ const Button = ({
     </RectButton>
   );
 };
+
+Button.defaultProps = { variant: 'default' };
 
 export default Button;

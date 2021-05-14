@@ -17,8 +17,10 @@ const Subslide = ({
 }: SubslideProps): React.ReactElement => {
   return (
     <View style={styles.container}>
-      <Text variant='title2'>{subtitle}</Text>
-      <Text variant='body' style={{ textAlign: 'center', marginBottom: 40 }}>
+      <Text variant='title2' style={styles.subtitle}>
+        {subtitle}
+      </Text>
+      <Text variant='body' style={styles.description}>
         {description}
       </Text>
       <Button
@@ -38,6 +40,11 @@ const styles = StyleSheet.create({
     padding: 44,
     marginTop: 25,
   },
+  subtitle: {
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  description: { textAlign: 'center', marginBottom: 40 },
 });
 
 export default Subslide;
