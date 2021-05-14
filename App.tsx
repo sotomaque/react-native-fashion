@@ -2,6 +2,7 @@ import { LoadAssets } from '@components';
 import RootNavigator from '@navigation';
 import * as React from 'react';
 import 'react-native-gesture-handler';
+import { ThemeProvider } from './src/components';
 import './src/config/i18n';
 
 const fonts = {
@@ -12,9 +13,11 @@ const fonts = {
 
 const App = (): React.ReactElement => {
   return (
-    <LoadAssets {...{ fonts }}>
-      <RootNavigator />
-    </LoadAssets>
+    <ThemeProvider>
+      <LoadAssets {...{ fonts }}>
+        <RootNavigator />
+      </LoadAssets>
+    </ThemeProvider>
   );
 };
 

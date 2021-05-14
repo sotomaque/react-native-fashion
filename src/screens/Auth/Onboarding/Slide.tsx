@@ -1,5 +1,6 @@
+import { Text } from '@components';
 import React from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
 import { BORDER_RADIUS } from './Onboarding';
 interface SlideProps {
   label: string;
@@ -21,7 +22,7 @@ const Slide = ({ label, right, picture }: SlideProps): React.ReactElement => {
         <Image source={picture} style={styles.image} />
       </View>
       <View style={[styles.titleContainer, { transform }]}>
-        <Text style={styles.title}>{label}</Text>
+        <Text variant='hero'>{label}</Text>
       </View>
     </View>
   );
@@ -34,13 +35,6 @@ const styles = StyleSheet.create({
   titleContainer: {
     height: 100,
     justifyContent: 'center',
-  },
-  title: {
-    fontSize: 65,
-    lineHeight: 80,
-    fontFamily: 'SFProText-Bold',
-    color: 'white',
-    textAlign: 'center',
   },
   underlay: {
     ...StyleSheet.absoluteFillObject,
