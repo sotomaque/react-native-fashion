@@ -9,6 +9,7 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import { AuthenticationStackParams } from 'src/navigation/types';
+import Dot from './Dot';
 import Slide, { SLIDE_HEIGHT } from './Slide';
 import Subslide from './Subslide';
 
@@ -74,6 +75,8 @@ const Onboarding = ({ navigation }: OnboardingProps): React.ReactElement => {
   const footerStyle = useAnimatedStyle(() => ({
     transform: [{ translateX: -x.value }],
   }));
+  const currentIndex = useDerivedValue(() => x.value / width);
+
   return (
     <View style={styles.container}>
       <Animated.View style={[styles.slider, slider]}>
@@ -99,6 +102,11 @@ const Onboarding = ({ navigation }: OnboardingProps): React.ReactElement => {
       <View style={styles.footer}>
         <Animated.View style={[StyleSheet.absoluteFill, background]} />
         <View style={styles.footerContent}>
+          <View style={styles.pagination}>
+            {slides.map((_, index) => (
+              <Dot key={index} currentIndex={currentIndex} {...{ index }} />
+            ))}
+          </View>
           <Animated.View
             style={[
               {
@@ -116,7 +124,7 @@ const Onboarding = ({ navigation }: OnboardingProps): React.ReactElement => {
                 last={index === slides.length - 1}
                 onPress={() => {
                   if (index === slides.length - 1) {
-                    navigation.navigate('Home');
+                    navigation.replace('Home');
                   } else if (scroll.current) {
                     scroll.current
                       .getNode()
@@ -148,6 +156,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     borderTopLeftRadius: BORDER_RADIUS,
+  },
+  pagination: {
+    ...StyleSheet.absoluteFillObject,
+    height: BORDER_RADIUS,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
