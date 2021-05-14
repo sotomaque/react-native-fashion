@@ -14,7 +14,7 @@ import Slide, { SLIDE_HEIGHT } from './Slide';
 import Subslide from './Subslide';
 
 const { width } = Dimensions.get('window');
-const BORDER_RADIUS = 75;
+export const BORDER_RADIUS = 75;
 
 const slides = [
   {
@@ -23,6 +23,7 @@ const slides = [
     subtitle: 'Flatten the learning curve',
     description:
       'Trading platforms each offer unique user experiences. Onboarding and getting comforatable with each is unnecessary friction we aim to reduce.',
+    picture: require('../assets/1.png'),
   },
   {
     title: 'Efficient',
@@ -30,6 +31,7 @@ const slides = [
     subtitle: 'Master view',
     description:
       'See how all your accounts across all the exchanges you use are preforming.',
+    picture: require('../assets/2.png'),
   },
   {
     title: 'Smart',
@@ -37,6 +39,7 @@ const slides = [
     subtitle: 'See an opportunity first',
     description:
       'Find opportunities on different exchanges and act quickly, without having to toggle tabs.',
+    picture: require('../assets/3.png'),
   },
   {
     title: 'Data Driven',
@@ -44,6 +47,7 @@ const slides = [
     subtitle: 'Trade smart not hard',
     description:
       'Analyze portfolio performance. Figure out where youre doing the right thing and where you are not.',
+    picture: require('../assets/4.png'),
   },
 ];
 
@@ -90,11 +94,12 @@ const Onboarding = ({ navigation }: OnboardingProps): React.ReactElement => {
           onScroll={onScroll}
           scrollEventThrottle={16}
         >
-          {slides.map(({ title }, index) => (
+          {slides.map(({ title, picture }, index) => (
             <Slide
               key={`${title}-${index}`}
               label={title}
               right={!!(index % 2)}
+              {...{ picture }}
             />
           ))}
         </Animated.ScrollView>
@@ -124,7 +129,7 @@ const Onboarding = ({ navigation }: OnboardingProps): React.ReactElement => {
                 last={index === slides.length - 1}
                 onPress={() => {
                   if (index === slides.length - 1) {
-                    navigation.replace('Home');
+                    navigation.replace('Welcome');
                   } else if (scroll.current) {
                     scroll.current
                       .getNode()

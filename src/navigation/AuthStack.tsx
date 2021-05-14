@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Onboarding } from '@screens';
+import { Onboarding, Welcome } from '@screens';
 import React from 'react';
 import { AuthenticationStackParams } from './types';
 
@@ -13,6 +13,7 @@ const AuthenticationNavigator = (): React.ReactElement => {
       }}
     >
       <AuthenticationStack.Screen name='Onboarding' component={Onboarding} />
+      <AuthenticationStack.Screen name='Welcome' component={Welcome} />
     </AuthenticationStack.Navigator>
   );
 };

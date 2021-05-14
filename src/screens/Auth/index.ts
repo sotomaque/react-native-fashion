@@ -1,5 +1,4 @@
-import Login from './Login';
-import Onboarding from './Onboarding';
-import Signup from './Signup';
-
-export { Login, Onboarding, Signup };
+export { default as Login } from './Login';
+export { default as Onboarding } from './Onboarding';
+export { default as Signup } from './Signup';
+export { default as Welcome } from './Welcome';
